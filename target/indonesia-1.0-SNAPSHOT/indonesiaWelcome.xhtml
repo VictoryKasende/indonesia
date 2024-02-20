@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="jakarta.faces.html">
+<h:head>
+    <title>Bienvenue en Indonésie</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous"/>
+    <!-- Lien vers Bootstrap CDN -->
+    <style>
+        /* Style additionnel pour centrer la div */
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ajustement de la hauteur pour centrer verticalement */
+        }
+        /* Style pour ajuster la taille de l'image */
+        .city-image {
+            max-width: 100%; /* Ajustement de la largeur maximale de l'image */
+            height: auto; /* Hauteur automatique pour conserver les proportions de l'image */
+            margin-bottom: 20px; /* Espacement en bas de l'image */
+        }
+    </style>
+</h:head>
+<h:body>
+    <div class="container center-content"> <!-- Utilisation de la classe container de Bootstrap -->
+        <div class="text-center">
+            <img src="jakarta.jpg" alt="Jakarta" class="city-image"/> <!-- Balise img pour afficher l'image de Jakarta -->
+            <h:form>
+                <h:outputLabel for="nom" value="Veuillez saisir votre nom : " />
+                <h:inputText id="nom" value="#{welcomeBean.name}" />
+                <br/>
+                <h:commandButton class="btn btn-primary" value="Valider" action="#{welcomeBean.sayWelcome()}" />
+                <br/>
+                <h:outputText value="#{welcomeBean.welcomeMessage}" rendered="#{not empty welcomeBean.welcomeMessage}" />
+                <br/>
+                <h:commandButton value="Commencer" action="#{welcomeBean.commencer}" rendered="#{welcomeBean.commence}"
+                                 class="btn btn-warning" />
+            </h:form>
+        </div>
+    </div>
+</h:body>
+</html>
