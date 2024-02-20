@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 2.0//EN" "http://java.sun.com/dtd/web-facesconfig_2_0.dtd">
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+              version="2.3">
+    <navigation-rule>
+        <from-view-id>/welcome_indonesia.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>page_accueil</from-outcome>
+            <to-view-id>/page_accueil.xhtml</to-view-id> <!-- L'URL de la page d'accueil -->
+            <!-- Si nécessaire, vous pouvez également spécifier des attributs pour passer des paramètres -->
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-action>#{navigationController.visiter}</from-action>
+            <if>#{navigationController.visited}</if>
+            <to-view-id>pages/lieu.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/page_accueil.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>about</from-outcome>
+            <to-view-id>pages/a_propos.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>
