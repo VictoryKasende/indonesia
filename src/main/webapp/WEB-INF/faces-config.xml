@@ -9,7 +9,6 @@
         <navigation-case>
             <from-outcome>page_accueil</from-outcome>
             <to-view-id>/page_accueil.xhtml</to-view-id> <!-- L'URL de la page d'accueil -->
-            <!-- Si nécessaire, vous pouvez également spécifier des attributs pour passer des paramètres -->
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
