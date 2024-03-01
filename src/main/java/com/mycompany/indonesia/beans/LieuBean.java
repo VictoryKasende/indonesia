@@ -10,6 +10,8 @@ import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +19,20 @@ import java.util.List;
 @Named("lieuBean")
 @RequestScoped
 public class LieuBean implements Serializable {
+
     private Long lieuIdToDelete;
     private Long lieuIdToModify;
+
+    @NotBlank(message = "Le nom est obligatoire")
+    @Size(min = 5, message = "Le nom doit avoir au moins 5 caractères")
     private String nomLieu;
+
+    @NotBlank(message = "Le type est obligatoire")
     private String typeLieu;
     private String description;
+
     private double latitude;
+
     private double longitude;
     static List<Lieu> listeLieux = new ArrayList<>();
 

@@ -18,9 +18,9 @@ public class NavigationController implements Serializable{
     public void guide(){
         try {
             ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            externalContext.redirect("pages/guide.xhtml"); // Redirection vers la nouvelle page
+            externalContext.redirect("pages/guide.xhtml");
         } catch (IOException e) {
-            e.printStackTrace(); // Gérer l'exception
+            e.printStackTrace();
         }
     }
 
