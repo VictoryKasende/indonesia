@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:jsp="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+    <title>Liste des Utilisateurs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous"/>
+</h:head>
+<h:body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Liste des Utilisateurs</h2>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Nom d'utilisateur</th>
+                        <th>Email</th>
+                        <th>Mot de passe</th>
+                        <!-- Ajoutez d'autres colonnes au besoin -->
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="#{utilisationBean.listeUsers}" var="utilisateur">
+                            <tr>
+                                <td>#{utilisateur.nom}</td>
+                                <td>#{utilisateur.email}</td>
+                                <td>#{utilisateur.mot_de_passe}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</h:body>
+</html>

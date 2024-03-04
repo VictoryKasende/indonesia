@@ -19,6 +19,7 @@ public class UtilisateurEntrepriseBean {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Transactional
     public void enregistrerUtilisateur(Utilisateur utilisateur) {
         // Hasher le mot de passe avant de l'enregistrer dans la base de données
         String motDePasseHash = BCrypt.hashpw(utilisateur.getMot_de_passe(), BCrypt.gensalt());
@@ -78,8 +79,13 @@ public class UtilisateurEntrepriseBean {
             entityManager.remove(utilisateur);
         }
     }
-
+    @Transactional
     public List<Utilisateur> listerTousLesUtilisateurs() {
+        return entityManager.createQuery("SELECT u FROM Utilisateur u", Utilisateur.class)
+                .getResultList();
+    }
+
+    public List<Utilisateur> getTousLesUtilisateurs() {
         return entityManager.createQuery("SELECT u FROM Utilisateur u", Utilisateur.class)
                 .getResultList();
     }

@@ -71,6 +71,5 @@ public class WelcomeBean implements Serializable {
 
     public String getRegistrationPageUrl() {
         return "register.xhtml";
-
     }
 }

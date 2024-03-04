@@ -1,6 +1,7 @@
 package com.mycompany.indonesia.beans;
 
 import com.mycompany.indonesia.business.UtilisateurEntrepriseBean;
+import com.mycompany.indonesia.entities.Lieu;
 import com.mycompany.indonesia.entities.Utilisateur;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -10,9 +11,13 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-@Named("creerCompteBean")
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+@Named("utilisationBean")
 @RequestScoped
-public class CreerCompteBean {
+public class UtilisateurBean implements Serializable {
 
     @NotBlank(message = "Le nom d'utilisateur est requis")
     @Size(min = 3, max = 20, message = "Le nom d'utilisateur doit avoir entre 3 et 20 caractères")
@@ -31,6 +36,8 @@ public class CreerCompteBean {
 
     @NotBlank(message="La confirmation du mot de passe est requise")
     private String confirmationMotDePasse;
+
+    static List<Utilisateur> listeUsers = new ArrayList<>();
 
     @Inject
     private UtilisateurEntrepriseBean utilisateurEntrepriseBean;
@@ -69,6 +76,9 @@ public class CreerCompteBean {
         this.confirmationMotDePasse = confirmationMotDePasse;
     }
 
+    public List<Utilisateur>getListeUsers(){
+        return utilisateurEntrepriseBean.listerTousLesUtilisateurs();
+    }
     // Méthode d'action pour créer le compte
     public String creerCompte() {
         if(!motDePasse.equals(confirmationMotDePasse)){
@@ -83,6 +93,15 @@ public class CreerCompteBean {
 
         utilisateurEntrepriseBean.enregistrerUtilisateur(utilisateur);
 
-        return "Success";
+        // Récupérer tous les utilisateurs après avoir enregistré le nouvel utilisateur
+        List<Utilisateur> tousLesUtilisateurs = utilisateurEntrepriseBean.listerTousLesUtilisateurs();
+
+        // Afficher les utilisateurs comme nécessaire
+        for (Utilisateur users : tousLesUtilisateurs) {
+            System.out.println(users.getEmail());
+        }
+
+        System.out.println("++++++++++++++++++++++++++++++++++++");
+        return "pages/list_users.xhtml";
     }
 }
