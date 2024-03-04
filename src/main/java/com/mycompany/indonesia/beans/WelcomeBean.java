@@ -17,6 +17,8 @@ import jakarta.enterprise.context.RequestScoped;
 public class WelcomeBean implements Serializable {
 
     private String name;
+    private String pseudo;
+    private String password;
     private String welcomeMessage;
     static boolean commence=false;
 
@@ -52,5 +54,23 @@ public class WelcomeBean implements Serializable {
     public String commencer() {
         commence=false;
         return "page_accueil";
+    }
+
+    public String getPseudo() {
+        return pseudo;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String seConnecter() {
+        commence=false;
+        return "page_accueil";
+    }
+
+    public String getRegistrationPageUrl() {
+        return "register.xhtml";
+
     }
 }

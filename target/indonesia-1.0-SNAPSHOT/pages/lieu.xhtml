@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+    <title>Welcome Indonesia</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+</head>
+<body>
+<div class="container"><br></br>
+    <h2>Gestion de lieu(Indonesia)</h2>
+    <h:form>
+        <div class="form-group">
+            <label for="nomLieu">Nom</label>
+            <h:inputText id="nomLieu" value="#{lieuBean.nomLieu}" class="form-control" >
+            </h:inputText>
+            <h:message for="nomLieu" style="color: red"/>
+        </div>
+        <div class="form-group">
+            <label for="typeLieu">Type</label>
+            <h:inputText id="typeLieu" value="#{lieuBean.typeLieu}" class="form-control">
+            </h:inputText>
+            <h:message for="typeLieu" style="color: red"/>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <h:inputTextarea id="description" value="#{lieuBean.description}" class="form-control" rows="3" />
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="latitude">Latitude</label>
+                <h:inputText id="latitude" value="#{lieuBean.latitude}" class="form-control" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="longitude">Longitude</label>
+                <h:inputText id="longitude" value="#{lieuBean.longitude}" class="form-control" />
+            </div>
+        </div>
+        <h:commandButton value="Ajouter" action="#{lieuBean.ajouterLieu}" class="btn btn-primary" />
+    </h:form>
+    <br/>
+    <h1>Liste des lieux</h1>
+    <table class="table mt-4">
+        <thead>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Type</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="#{lieuBean.listeLieux}" var="lieu">
+            <tr>
+                <td>#{lieu.nom_lieu}</td>
+                <td>#{lieu.type_lieu}</td>
+                <td>#{lieu.description}</td>
+                <td>
+                    <a href="modification_lieu.xhtml?lieuId=#{lieu.id}">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <h:form>
+                        <h:commandButton value="Supprimer" styleClass="btn btn-danger"
+                                         onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')"
+                                         action="#{lieuBean.supprimerLieu}">
+                            <f:setPropertyActionListener target="#{lieuBean.lieuIdToDelete}" value="#{lieu.id}" />
+                        </h:commandButton>
+                    </h:form>
+
+                </td>
+
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

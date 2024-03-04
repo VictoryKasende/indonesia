@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <title>Welcome Indonesia</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous"/>
+    <!-- Lien vers Bootstrap CDN -->
+    <style>
+
+    </style>
+</h:head>
+<h:body>
+    <div class="d-flex justify-content-center align-items-center min-vh-100"> <!-- Utilisation de flexbox pour centrer verticalement -->
+        <div class="container"> <!-- Utilisation de la classe container de Bootstrap -->
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <h2>Découvrir Jakarta</h2>
+                    <p>Découvrir Jakarta est une application web qui vise à fournir aux visiteurs une expérience unique lors de leur exploration de la ville animée de Jakarta, en Indonésie. Que vous soyez intéressé par la visite de lieux historiques, la découverte de la culture locale ou la recherche de bons plans, notre application est là pour vous aider à planifier votre voyage et à tirer le meilleur parti de votre séjour.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Visiter un lieu</h5>
+                            <!-- Contenu de la section "Visiter un lieu" -->
+                            <p>Contenu de la section "Visiter un lieu".</p>
+                            <h:form>
+                                <h:commandButton value="En savoir plus"
+                                                 action="#{navigationController.visiter}"
+                                                 class="btn btn-primary"
+
+                                />
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Guide</h5>
+                            <!-- Contenu de la section "Guide" -->
+                            <p>Contenu de la section "Guide".</p>
+                            <h:form>
+                                <h:commandLink value="Découvrir"
+                                               action="#{navigationController.guide()}"
+                                               class="btn btn-primary" />
+                            </h:form>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">À propos</h5>
+                            <!-- Contenu de la section "À propos" -->
+                            <p>Contenu de la section "À propos".</p>
+                            <h:form>
+                                <h:commandLink value="À propos"
+                                               action="about"
+                                               class="btn btn-primary"/>
+                            </h:form>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+</html>
