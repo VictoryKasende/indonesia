@@ -35,4 +35,13 @@
             <redirect/>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pages/creerCompte.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{utilisationBean.creerCompte}</from-action>
+            <from-outcome>/indonesiaWelcome.xhtml</from-outcome>
+            <to-view-id>/indonesiaWelcome.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

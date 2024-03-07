@@ -20,12 +20,12 @@
                     <div class="form-group">
                         <label for="nomUtilisateur">Nom d'utilisateur</label>
                         <h:inputText id="nomUtilisateur" value="#{utilisationBean.nomUtilisateur}" class="form-control"/>
-                        <h:message for="nomUtilisateur" styleClass="text-danger"/>
+                        <h:outputText value="#{utilisationBean.existeNom}" style="color: red" />
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <h:inputText id="email" value="#{utilisationBean.email}" class="form-control"/>
-                        <h:message for="email" styleClass="text-danger"/>
+                        <h:outputText value="#{utilisationBean.existeMail}" style="color: red" />
                     </div>
                     <div class="form-group">
                         <label for="motDePasse">Mot de passe</label>

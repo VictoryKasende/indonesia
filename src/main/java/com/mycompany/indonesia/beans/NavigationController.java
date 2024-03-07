@@ -23,7 +23,6 @@ public class NavigationController implements Serializable{
             e.printStackTrace();
         }
     }
-
     public boolean isVisited() {
         return visited;
     }
@@ -31,5 +30,4 @@ public class NavigationController implements Serializable{
     public void visiter(){
         visited=true;
     }
-
 }

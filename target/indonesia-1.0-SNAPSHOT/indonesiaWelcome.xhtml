@@ -26,24 +26,37 @@
     </style>
 </h:head>
 <h:body>
-    <div class="container center-content"> <!-- Utilisation de la classe container de Bootstrap -->
+    <div class="container center-content">
         <div class="text-center">
-            <img src="jakarta.jpg" alt="Jakarta" class="city-image"/> <!-- Balise img pour afficher l'image de Jakarta -->
+            <img src="jakarta.jpg" alt="Jakarta" class="city-image"/>
             <h:form>
-                <div class="form-group">
-                    <h:outputLabel for="pseudo" value="Pseudo : " />
-<!--                    <h:inputText id="pseudo" value="#{welcomeBean.pseudo}" class="form-control"/>-->
+                <div class="form-group row">
+                    <label for="username" class="col-sm-3 col-form-label">Nom d'utilisateur :</label>
+                    <div class="col-sm-9">
+                        <h:inputText id="username" value="#{welcomeBean.username}"
+                                     class="form-control"/>
+                        <h:message for="username" style="color: red" />
+                    </div>
                 </div>
-                <div class="form-group">
-                    <h:outputLabel for="password" value="Mot de passe : " />
-<!--                    <h:inputSecret id="password" value="#{welcomeBean.password}" class="form-control"/>-->
+                <div class="form-group row">
+                    <label for="password" class="col-sm-3 col-form-label">Mot de passe :</label>
+
+                    <div class="col-sm-9">
+                        <h:inputSecret id="password" value="#{welcomeBean.password}"
+                                       class="form-control" />
+                        <h:message for="password" style="color: red" />
+                    </div>
                 </div>
-                <h:commandButton value="Se connecter" action="#{welcomeBean.commencer}" class="btn btn-primary" />
+                <!-- Affichage du message de bienvenue ou d'erreur -->
+                <h:outputText value="#{welcomeBean.welcomeMessage}" style="color: red" />
                 <br/>
-                <h:outputText value="#{welcomeBean.welcomeMessage}" rendered="#{not empty welcomeBean.welcomeMessage}" />
+
+                <h:commandButton value="Se connecter" action="#{welcomeBean.authenticate()}" class="btn btn-primary d-inline-block" />
+                <br/>
+                <br/>
+                <h:outputLink value="pages/creerCompte.xhtml">Créer un compte</h:outputLink>
             </h:form>
             <br/>
-            <h:outputLink value="pages/creerCompte.xhtml">Créer un compte</h:outputLink>
         </div>
     </div>
 </h:body>

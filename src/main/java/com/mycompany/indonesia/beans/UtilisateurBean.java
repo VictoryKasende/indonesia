@@ -38,7 +38,8 @@ public class UtilisateurBean implements Serializable {
     private String confirmationMotDePasse;
 
     static List<Utilisateur> listeUsers = new ArrayList<>();
-
+    private String existeNom;
+    private String existeMail;
     @Inject
     private UtilisateurEntrepriseBean utilisateurEntrepriseBean;
 
@@ -84,6 +85,13 @@ public class UtilisateurBean implements Serializable {
         if(!motDePasse.equals(confirmationMotDePasse)){
             this.confirmationMotDePasse="Les mots de passe ne correspondent pas";
             return "erreur";
+        } else if (this.utilisateurEntrepriseBean.trouveUtilisateurParNom(nomUtilisateur)) {
+            this.existeNom="Ce nom d'utilisateur existe";
+            return "erreur";
+        }
+        else if (this.utilisateurEntrepriseBean.trouverUtilisateurParEmail(email)) {
+            this.existeMail="Ce mail d'utilisateur existe";
+            return "erreur";
         }
         // Créer une instance de Utilisateur et la remplir avec les données du formulaire
         Utilisateur utilisateur = new Utilisateur();
@@ -92,16 +100,22 @@ public class UtilisateurBean implements Serializable {
         utilisateur.setMot_de_passe(motDePasse);
 
         utilisateurEntrepriseBean.enregistrerUtilisateur(utilisateur);
+        return "/indonesiaWelcome.xhtml";
+    }
 
-        // Récupérer tous les utilisateurs après avoir enregistré le nouvel utilisateur
-        List<Utilisateur> tousLesUtilisateurs = utilisateurEntrepriseBean.listerTousLesUtilisateurs();
+    public String getExisteNom() {
+        return existeNom;
+    }
 
-        // Afficher les utilisateurs comme nécessaire
-        for (Utilisateur users : tousLesUtilisateurs) {
-            System.out.println(users.getEmail());
-        }
+    public void setExisteNom(String existeNom) {
+        this.existeNom = existeNom;
+    }
 
-        System.out.println("++++++++++++++++++++++++++++++++++++");
-        return "pages/list_users.xhtml";
+    public String getExisteMail() {
+        return existeMail;
+    }
+
+    public void setExisteMail(String existeMail) {
+        this.existeMail = existeMail;
     }
 }

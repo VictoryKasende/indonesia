@@ -27,6 +27,7 @@ public class UtilisateurEntrepriseBean {
 
         entityManager.persist(utilisateur);
     }
+
     public boolean trouveUtilisateurParNom(String nomUtilisateur) {
         TypedQuery<Long> query = entityManager.createQuery(
                 "SELECT COUNT(u) FROM Utilisateur u WHERE u.nom = :nomUtilisateur", Long.class);
@@ -35,6 +36,7 @@ public class UtilisateurEntrepriseBean {
         Long count = query.getSingleResult();
         return count > 0;
     }
+
     public boolean trouverUtilisateurParEmail(String email) {
         TypedQuery<Long> query = entityManager.createQuery(
                 "SELECT COUNT(u) FROM Utilisateur u WHERE u.email = :email", Long.class);
